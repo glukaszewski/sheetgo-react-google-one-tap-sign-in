@@ -1,6 +1,6 @@
 {
   "name": "sheetgo-react-google-one-tap-sign-in",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sheetgo forking of React wrapper for google one tap authentication",
   "keywords": [
     "one",
