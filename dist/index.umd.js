@@ -132,7 +132,12 @@
         }
     }
     function useGoogleOneTapLogin(_a) {
-        var onError = _a.onError, disabled = _a.disabled, onSuccess = _a.onSuccess, googleAccountConfigs = _a.googleAccountConfigs;
+        var onError = _a.onError, disabled = _a.disabled, onSuccess = _a.onSuccess, onMoment = _a.onMoment, googleAccountConfigs = _a.googleAccountConfigs;
+        var momentCallback = function({ g, h, j }) {
+            if (onMoment && typeof onMoment === 'function') {
+                onMoment(g, h, j);
+            }
+        }
         var script = useScript(googleClientScriptURL);
         react.useEffect(function () {
             if (!(window === null || window === void 0 ? void 0 : window[scriptFlag]) && window.google && script === 'ready') {
@@ -142,7 +147,7 @@
                 window[scriptFlag] = true;
             }
             if ((window === null || window === void 0 ? void 0 : window[scriptFlag]) && script === 'ready' && !disabled) {
-                window.google.accounts.id.prompt();
+                window.google.accounts.id.prompt(momentCallback);
             }
         }, [script, window === null || window === void 0 ? void 0 : window[scriptFlag], disabled]);
         return null;

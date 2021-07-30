@@ -13,6 +13,8 @@ export interface IUseGoogleOneTapLogin {
     onError?: (error?: Error | string) => void;
     googleAccountConfigs: IGoogleOneTapLoginProps;
     onSuccess?: (response: IGoogleEndPointResponse) => void;
+    onMoment?: (eventType?: string, value?: boolean | string, message?: string) => void;
+    decodeToken?: boolean
 }
 export interface IGoogleOneTapLoginProps {
     nonce?: string;
